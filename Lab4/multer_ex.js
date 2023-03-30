@@ -1,10 +1,11 @@
 const express = require('express')
+const exphbs = require('express-handlebars').create();
 const bodyParser = require('body-parser')
 const multer = require('multer');
 const port = 3000;
 const app = express();
-
-
+app.engine('handlebars', exphbs.engine);
+app.set('view engine', 'handlebars');
 //mongoose db connection
 const mongoose = require('mongoose');
 
@@ -18,28 +19,31 @@ app.get('/sinhviens', async (req, res) => {
     const sinhviens = await svModel.find();
 
     //1 cach khac
-    // for(let i = 0; i < sinhviens.length; i++) {
-    //     let arrSV = sinhviens[i];
-    //     console.log(`Sinh vien thu ${i+1}: `);
-    //     console.log(`tensv: ${ten}, tuoi: ${tuoi}, `);
-    // };
+    for(let i = 0; i < sinhviens.length; i++) {
+        let arrSV = sinhviens[i];
+        console.log(`Sinh vien thu ${i+1}: `);
+        console.log(`tensv: ${arrSV.ten}, tuoi: ${arrSV.tuoi}`);
+    };
 
+    res.render('home', {
+        layout: 'main',
+        listSV: sinhviens.map(sinhvien => sinhvien.toJSON())
+        
+    });
 
-    try {
-        console.log(sinhviens);
-        res.send(sinhviens); 
+        // res.send(sinhviens); 
 
-    } catch (e) {
-        res.status(500).send(e);
-    } 
 });
+
+
+
 
 //them du liey
 app.get('/addsv', async (req, res) => {
     await mongoose.connect(url).then(console.log('ket noi db thanh cong'));
     let sv = new svModel({
-        ten: 'nam',
-        tuoi: 30
+        ten: 'Tâm',
+        tuoi: 28
     });
     sv.diachi = 'HN';
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,5 +14,44 @@
     <h2>Số B: {{soB}}</h2>
     <h2>Phep tinh: {{operator}}</h2>
     <h2>Ket Qua: {{kq}}</h2>
+</body>
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+      <div class="container-fluid pb-3">
+     <div class="bg-light border rounded-3">
+            <h2>Danh sách người dùng</h2>
+                <table border="1" class="table table-hover">
+                  <tr class="info">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                  
+                  </tr>
+                  <tr >
+                    {{#each listSV}}
+                      <tr>
+                        <td> {{this.ten}}</td>
+                        <td>{{this.tuoi}}</td>
+                        <td>{{this.diachi}}</td>
+                      
+                      </tr>
+                  {{/each}}
+                  </tr>
+                </table>
+          </div>
+          </div>
 </body>
 </html>
