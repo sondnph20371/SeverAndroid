@@ -1,0 +1,73 @@
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ví dụ Handlebars Template </title>
+</head>
+
+<body>
+  <h1>Hello</h1>
+  <h2>PH20371</h2>
+
+  <h2>Số A: {{soA}}</h2>
+  <h2>Số B: {{soB}}</h2>
+  <h2>Phep tinh: {{operator}}</h2>
+  <h2>Ket Qua: {{kq}}</h2>
+</body>
+
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container-fluid pb-3">
+    <div class="dropdown">
+      <a href="addsv" class="list-group-item list-group-item-action"><img
+          src="https://png.pngtree.com/png-vector/20190120/ourlarge/pngtree-add-vector-icon-png-image_470700.jpg" alt=""
+          style="height: 60px;"></a>
+    </div>
+    <div class="bg-light border rounded-3">
+      <h2>Danh sách sinh viên</h2>
+      <table border="1" class="table table-hover">  
+        <tr class="info">
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          
+        </tr>
+        <tr>
+          {{#each listSV}}
+        <tr>
+          <td> {{this.ten}}</td>
+          <td>{{this.tuoi}}</td>
+          <td>{{this.diachi}}</td>
+          <td>
+            <a href="updatesv/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="deletesv/{{this._id}}" onclick="return confirm('Bạn có chắc mún xóa khum?')"
+              class="btn btn-primary btn-sm">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
